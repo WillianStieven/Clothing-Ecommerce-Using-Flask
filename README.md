@@ -36,7 +36,7 @@ cd Clothing-Ecommerce-Using-Flask
 
 ### *2.* Dependências
 
-pip install Flask, Flask-Mail  
+pip install Flask, Flask-Mail ou use a Env_site
 Instale DB Browser (SQLite)
 
 ### *3.* Executar a aplicação 

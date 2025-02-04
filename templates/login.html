@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Pagina de login</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='Login.css') }}">
+      <link href="https://db.onlinewebfonts.com/c/5f1f5f1069636f4fa9cae26afbe40364?family=OneSignature" rel="stylesheet"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <header>
+      <div class="navigation">
+         <div class="container_logo">
+            <a href="/"><img id="logo"src="{{ url_for('static', filename='imgs_adds/heart-white.png') }}"></a>
+         </div>
+      </div>
+  </header>
+  <body>
+      <main>
+         <div id="body"></div>
+         <div class="container-p">
+            <div class="wrapper">
+               <div class="title login">
+                  Bem vindo de volta!
+               </div>
+               <div class="form-container">
+                  <label for="login" class="slidelogin">realizar login</label>
+               </div>
+               {% for messages in get_flashed_messages() %}
+               <ul class="flashes">{{ messages }}
+                  <svg class="svg-icon" viewBox="0 0 20 20" width="20px">
+                     <path d="M18.344,16.174l-7.98-12.856c-0.172-0.288-0.586-0.288-0.758,0L1.627,16.217c0.339-0.543-0.603,0.668,0.384,0.682h15.991C18.893,16.891,18.167,15.961,18.344,16.174 M2.789,16.008l7.196-11.6l7.224,11.6H2.789z M10.455,7.552v3.561c0,0.244-0.199,0.445-0.443,0.445s-0.443-0.201-0.443-0.445V7.552c0-0.245,0.199-0.445,0.443-0.445S10.455,7.307,10.455,7.552M10.012,12.439c-0.733,0-1.33,0.6-1.33,1.336s0.597,1.336,1.33,1.336c0.734,0,1.33-0.6,1.33-1.336S10.746,12.439,10.012,12.439M10.012,14.221c-0.244,0-0.443-0.199-0.443-0.445c0-0.244,0.199-0.445,0.443-0.445s0.443,0.201,0.443,0.445C10.455,14.021,10.256,14.221,10.012,14.221"></path>
+                  </svg>
+               </ul>
+               {% endfor %}
+               <div class="form-inner">
+                  <form action="logout" method="POST" class="login">
+                     <div class="field">
+                        <input name="checaremail" type="text" placeholder="Email" required>
+                     </div>
+                     <div class="field">
+                        <input type="password" name="checarsenha" placeholder="Senha" required>
+                     </div>
+                     <div class="pass-link">
+                        <a id="insc" style="font-size: 13px;" href="/recuperarsenha">Esqueceu a senha?</a>
+                     </div>
+                     <div class="box_btn">
+                        <div class="field btn">
+                           <div class="btn-layer">
+                              <input type="submit" value="Logar-se">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="signup-login">
+                        Não realizou seu cadastro?<a id="insc" href="/checking"> Inscreva-se</a>
+                     </div>
+                  </form>
+               </div>
+         </div>
+      </main>
+		<footer class="f-two">
+			<a href="/"><img style="width: 100px;" src="/static/imgs_adds/asalogob.png"></a>
+			<p style="color: white; font-size: 20px;">|</p>
+			<a href="/login" id="anjo">Seja um anjo</a>
+		</footer>
+  </body>
+</html>

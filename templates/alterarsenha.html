@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='Login.css') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <header>
+      <div class="navigation">
+          <div class="logo">
+            <img id="logo"src="{{ url_for('static', filename='imgs_adds/heart-white.png') }}">
+         </div>
+  </header>
+   <main>
+      <div class="container-email">
+         <div class="wrapper-email">
+            {% for messages in get_flashed_messages() %}
+                  <ul class="flash-email">
+                     {{ messages }}
+                  </ul>
+            {% endfor %}
+            <p>Digite codigo de recuperação enviado em seu email:</p>
+            <form action="alterarsenha" method="POST">
+                  <div>
+                     <input class="field-email" name="codigo" type="text" placeholder="Codigo de recuperação" required>
+                  </div>
+                  <div class="container-email">
+                     <a href="/login" id="insc">retornar</a>
+                     <input type="submit" value="Confirmar" id="btn_email" style="font-size: 13px;" width="150px">
+                  </div>
+            </form>
+         </div>
+      </div>
+   </main>
+   <footer class="f-two">
+      <div class="box_logo_asamayim">
+         <a href="/"><img id="logo_asamayim"src="{{url_for('static', filename='imgs_adds/asalogob.png')}}"></a>
+      </div>
+      <div class="sign-footer">
+         <a>©todos os direitos reservados ASAMAYIM CNPJ: 92.754.738/0001-62</a>
+      </div>
+   </footer>
+</html>

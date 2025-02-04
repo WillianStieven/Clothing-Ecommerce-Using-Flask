@@ -1,0 +1,337 @@
+* {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+  }
+  html, body{
+	  height: 100%;
+	  background-color: #090909;
+
+  }
+  main{
+	  min-height: 100%;
+	  display: flex;
+	  flex-direction: column;
+  }
+header {
+	display: flex;
+	justify-content: center;
+    gap: 4em;
+	align-items: center;
+	color: aliceblue;
+	font-weight: 600;
+	font-size: 20px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	border-bottom: 1px solid #131313;
+	width: 100vw;
+	padding: 20px;
+}
+.frase span {
+	font-size: 14px;
+	font-weight: bold;
+	color: transparent;
+	letter-spacing: 5px;
+	background-color: #1A1A1A;
+	/* text-shadow: 1px 1px 3px #f9f9f9; */
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+	font-size: 10px;
+	background-color: #f9f9f9;
+
+}
+.header_items{
+	display: flex;
+	gap: 2em;
+}
+
+#img_3d{
+	max-width: 700px;
+	position: relative;
+	bottom: -1.5em;
+}
+.apocalipse{
+	background-image: url(../static/backk.jpg);
+	height: 1000px;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-size: 870px;
+	background-position: center;
+	position: relative;
+	bottom: -6em;
+
+}
+.end{
+	justify-content: center;
+	display: grid;
+	padding: 5%;
+}
+#logo {
+	width: 180px;
+}
+#img_cora{
+	height: 80px;
+	width: 80px;
+	transform: scale(1);
+	animation: pulse 2.6s infinite;
+}
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(0.95);
+
+	}
+}
+.box_img{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 140px;
+	width: 140px;	
+	border-radius: 50%;
+	border: 1px solid #131313;
+	margin: 2%;
+}
+.container_home{
+	display: flex;
+	justify-content: center;
+}
+.layer_home{
+	width: 1000px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+.layer_sobre{
+	display: flex;
+	justify-content: center;
+
+}
+#logo_vitrine{
+	fill: white;
+	width: 80px;
+}
+.text{
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	line-height: 2.5em;
+	color: white;
+	font-size: 11px;
+	width: 350px;
+	text-align: justify;
+	margin: 3%;
+	position: relative;
+	z-index: 3;
+}
+.text_two{
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	line-height: 2.5em;
+	color: rgb(163, 163, 163);
+	font-size: 11px;
+	width: 350px;
+	text-align: justify;
+	position: relative;
+	margin: 3%;
+	top: 17em;
+	z-index: 3;
+}
+
+.box_sobre{
+	width: 800px;
+	display: flex;
+	justify-content: center;
+}
+.letter{
+	padding: 2%;
+	padding-bottom: 0%;
+	font-size: 3em;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-weight: 600;
+	color: aliceblue;
+}
+.container_letter{
+	display: flex;
+	align-items: center;
+	width: 50%;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	color: aliceblue;
+	font-size: 30px;
+}
+h1{
+	margin: 40px;
+}
+
+#logo_two{
+	width: 35px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.box_logo{
+	width: 100%;
+	display: flex;
+	justify-content: start;
+}
+.box_layer{
+	width: 100px;
+	text-align: center;
+	color: white;
+	line-height: 2.5em;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.layer_home{
+	margin-bottom: 70px;
+	margin-top: 30px;
+}
+.container__footer{
+	background-color: #131313;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+	width: 100%;
+    margin: auto;
+}
+.f-two{
+	display: flex;
+	justify-content: center;
+	background-color: #1A1A1A;
+	width: 100%;
+	padding: 2%;
+	height: auto;
+}
+.sign-footer{
+	color: #f7f7e8;
+
+}
+.box__footer{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+	padding-top: 0px;
+	padding-bottom: 60px;
+}
+
+.box__footer .terms{
+    max-width: 350px;
+    margin-top: 20px;
+    font-weight: 500;
+    color: #7a7a7a;
+    font-size: 12px;
+}
+
+.box__footer h2{
+	font-size: 18px;
+    margin-bottom: 10px;
+    color:  #f7f7e8;
+    font-weight: 700;
+}
+
+.box__footer a{
+	font-size: 12px;
+    margin-top: 10px;
+    color:  #f7f7e8;
+	opacity: 90%;
+    font-weight: 600;
+}
+
+.box__footer a:hover{
+    opacity: 0.8;
+}
+
+.box__footer a .fab{
+    font-size: 20px;
+}
+.svg-icon-bot {
+	width: 30px;
+	height: 18px;
+	fill:  #f7f7e8;
+	}
+
+#img_asa1{
+	height: 300px;
+	position: relative;
+	top: 30em;
+	left: 25em;
+	transform: rotate(5deg);
+}
+#img_asa2{
+	height: 300px;
+	position: relative;
+	left: 5em;
+}
+#img_asa3{
+	height: 300px;
+	position: relative;
+	right: 5em;
+}
+#img_asa4{
+	height: 300px;
+	position: relative;
+	right: 25em;
+	top: 30em;
+}
+.quadrado{
+	/* #060606; */
+	width: 300px;
+	height: 300px;
+	outline: 10px solid #131313;
+	position: relative;
+	left: 15em;
+	margin-left: -300px;
+	z-index: 1;
+}
+.retangulo_vertical{
+	width: 200px;
+	height: 500px;
+	outline: 10px solid #131313;
+	position: relative;
+	left: 50em;
+	top: 5em;
+	margin-left: -500px;
+	z-index: 1;
+}
+.retangulo_horizontal{
+	width: 900px;
+	height: 150px;
+	outline: 10px solid #131313;
+	position: relative;
+	/* left: 50em; */
+	top: 25em;
+	margin-left: -900px;
+	z-index: 1;
+}
+#img_anjo_one{
+	height: 300px;
+	position: relative;
+	left: 20em;
+	margin-left: -600px;
+	z-index: 2;
+}
+#img_anjo_two{
+	height: 300px;
+	position: relative;
+	top: 10em;
+	right: 40em;
+	z-index: 2;
+}
+#img_anjo_tree{
+	height: 300px;
+	position: relative;
+	top: 25em;
+	left: 10em;
+	margin-left: -400px;
+	z-index: 2;
+}
+#anjo{
+	font-size: 30px;
+	font-family: "OneSignature"; 
+	color: white;
+}

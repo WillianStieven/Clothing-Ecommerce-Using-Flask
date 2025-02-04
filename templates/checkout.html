@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Pagina de login</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='Login.css') }}">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <header>
+      <div class="navigation">
+         <div class="container_logo">
+            <a href="/"><img id="logo"src="{{ url_for('static', filename='imgs_adds/heart-white.png') }}"></a>
+         </div>
+      </div>
+  </header>
+     <body> 
+        <main>
+            <div class="container-p">
+                <div class="wrapper-email">
+                    {% for messages in get_flashed_messages() %}
+                        <ul class="flash-email">
+                        {{ messages }}
+                        </ul>
+                    {% endfor %}
+                    <p>Digite o código enviado em seu email:</p>
+                    <form action="checkout" method="POST">
+                        <div>
+                           <input class="field-email" name="codigo" type="text" placeholder="Código" required>
+                        </div>
+                        <div class="container-email">
+                           <a href="/login" id="insc">retornar</a>
+                           <input type="submit" value="Confirmar email" id="btn_email" style="font-size: 13px;">
+                        </div>
+                   </form>
+                </div>
+            </div>
+        </main>
+        <footer class="f-two">
+            <div class="box_logo_asamayim">
+               <img id="logo_asamayim"src="{{url_for('static', filename='imgs_adds/asalogob.png')}}">
+            </div>
+            <div class="sign-footer">
+               <a>©todos os direitos reservados ASAMAYIM CNPJ: 92.754.738/0001-62</a>
+            </div>
+         </footer>
+         <script>
+            if ("{{angel}}" != ''){
+               angel = "{{angel}}"
+               sessionStorage.setItem('data', JSON.stringify(angel))
+               window.location.href = "/";
+            }
+         </script>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='Login.css') }}">
+        <link href="https://db.onlinewebfonts.com/c/5f1f5f1069636f4fa9cae26afbe40364?family=OneSignature" rel="stylesheet"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <header>
+      <div class="navigation">
+          <div class="logo">
+            <a href="/"><img id="logo" src="{{ url_for('static', filename='imgs_adds/heart-white.png') }}"></a>
+         </div>
+  </header>
+   <main>
+      <div class="container-p">
+         <div class="wrapper">
+               {% for messages in get_flashed_messages() %}
+                  <ul class="flash-email">
+                     {{ messages }}
+                  </ul>
+               {% endfor %}
+            <p class="p">Digite email de recuperação:</p>
+            <form action="recuperarsenha" method="POST">
+                  <div class="field">
+                     <input name="email" type="text" placeholder="Email" required>
+                  </div>
+                  <p class="p">Digite sua nova senha:</p>
+                  <div class="field">
+                     <input type="password" class="field-email" name="senha" placeholder="Senha" required>
+                  </div>
+                  <div class="field" style="margin-top: 5px;">
+                     <input type="password" class="field-email" name="confirmarsenha" placeholder="Confirmar senha" required>
+                  </div>
+                  <div class="container-email">
+                     <a href="/login" id="insc">retornar</a>
+                     <input type="submit" value="Continuar" id="btn_email" style="font-size: 13px;">
+                  </div> 
+            </form>
+         </div>
+      </div>
+   </main>
+   <footer class="f-two">
+      <a href="/"><img style="width: 100px;" src="/static/imgs_adds/asalogob.png"></a>
+      <p style="color: white; font-size: 20px;">|</p>
+      <a href="/login" id="anjo">Seja um anjo</a>
+   </footer>
+   </footer>
+</html>

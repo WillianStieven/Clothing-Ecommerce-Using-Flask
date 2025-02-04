@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Final</title>
+	<meta name="viewport" content="width=500, initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='Heart.css') }}">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,900" rel="stylesheet">
+</head>
+<header>
+    <div class="logo">
+        <a href="/"><img id="logo"src="{{url_for('static', filename='imgs_adds/asalogob.png')}}"></a>
+    </div>
+</header>
+<div id="cor_header"></div>
+<body onload="cart_out()">
+    <main>
+        <div class="layout_identify">
+            <div class="box_identify"> 
+                <div class="Heading">Sua ordem</div>
+                <div id="container_cart"></div>
+                <p class="Heading">Dados para a entrega</p>
+                <div class="form_adress">
+                    <!-- <div class="column_adress">
+                        <input type="text" id="cep" maxlength="9" placeholder="CEP:" autofocus required>
+                        <button class="button_frete" type="button">CALCULAR FRETE</button>
+                    </div> -->
+                    <div class="column_adress">
+                        <input type="text" id="cep" maxlength="9" placeholder="CEP:" autofocus required>
+                        <input type="text" id="uf" placeholder="UF:" required>
+                        <input type="text" id="cidade" placeholder="CIDADE:" required>
+                        <input type="text" id="bairro" placeholder="BAIRRO:" required>
+                        <input type="text" id="endereco" placeholder="RUA:" required>
+                        <input type="text" id="telefone" placeholder="TELEFONE:" required>
+                    </div>
+                </div>
+            </div>
+            <div class="container_finish">
+                <div class="container_resumo">
+                    <div class="box_desconto">
+                        <input class="input" id='cupom' placeholder="CUPOM DE DESCONTO">
+                        <button class="button_input" type="button">Aplicar</button>
+                    </div>
+                    <div class="cp"><p id='cp_invalid'>Cupom inválido</p></div>
+                    <div class="text_resumo">DESCONTO <p id="desconto">R$0</p></div>
+                    <div class="text_resumo">FRETE <p id="frete"></p></div>
+                    <div class="text_resumo">SUBTOTAL<p id="subtotal"></p></div>
+                    <div class="text_resumo">TOTAL<p id="total"></p></div>
+                    <a onclick="order()" class="button" style="border-radius: 0px;" type="submit">FINALIZAR COMPRA
+                        <svg class="svg_icon_buttom" viewBox="0 0 20 20">
+                            <path d="M1.729,9.212h14.656l-4.184-4.184c-0.307-0.306-0.307-0.801,0-1.107c0.305-0.306,0.801-0.306,1.106,0
+                            l5.481,5.482c0.018,0.014,0.037,0.019,0.053,0.034c0.181,0.181,0.242,0.425,0.209,0.66c-0.004,0.038-0.012,0.071-0.021,0.109
+                            c-0.028,0.098-0.075,0.188-0.143,0.271c-0.021,0.026-0.021,0.061-0.045,0.085c-0.015,0.016-0.034,0.02-0.051,0.033l-5.483,5.483
+                            c-0.306,0.307-0.802,0.307-1.106,0c-0.307-0.305-0.307-0.801,0-1.105l4.184-4.185H1.729c-0.436,0-0.788-0.353-0.788-0.788
+                            S1.293,9.212,1.729,9.212z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<footer class="f-two">
+			<a href="/"><img id="logo" src="/static/imgs_adds/asalogob.png"></a>
+			<p style="color: white; font-size: 20px;">|</p>
+			<a href="/login" id="anjo">Seja um anjo</a>
+		</footer>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="{{url_for('static', filename='Functions.js')}}"></script>
+<script>
+storage = JSON.parse(localStorage.getItem('cart'))
+total = 0
+cinco = "5%"
+storage.forEach((item) => {
+    price = item.price.replace("R$", '').replace(",", '.')
+    total = total + price*item.quant
+})  
+mult = total * 0.05 
+desc = total - mult
+document.getElementById("total").innerHTML = "R$"+total
+
+$(".button_input").on("click", function() { 
+    cp = document.getElementById("cupom").value
+    if (cp == "CINCO"){
+        desconto = cinco
+        document.getElementsByClassName("cp")[0].style.display="none"
+        document.getElementById("desconto").innerHTML = "5%"
+        document.getElementById("total").innerHTML = "R$"+desc
+    }
+    else{
+        document.getElementsByClassName("cp")[0].style.display="flex"
+        document.getElementById("desconto").innerHTML = "R$0"
+        document.getElementById("total").innerHTML = "R$"+total
+
+    }
+
+})
+function cart_out(){
+    const storage = JSON.parse(localStorage.getItem('cart'));
+    const tbody = document.getElementById("container_cart")
+
+    if (storage.length != 0){
+        storage.map(item => {
+            div = document.createElement("div")   
+            div.classList.add('itemCar')
+            insert_element =`
+            <div class="Cart_Items_end" id="cart">
+                <div class="image-box">
+                    <img id="img-r" src="${item.image}" width="40" height="40"/>
+                </div>
+                <div class="about">
+                    <h1 class="title_box_cart">${item.title}</h1>
+                </div>
+                <div>
+                    <p>Unid: ${item.quant}</p>
+                    <p id="size">tamanho:${item.size}</p>
+                </div>
+                <div class="prices">
+                    <div class="amount" id="RS">${item.price}</div>
+                </div>
+            </div>
+            <div class="total_amount"></div>`
+            div.innerHTML = insert_element
+            tbody.append(div)
+            CarTotal()
+        })
+    }
+}   
+$("#cep").blur(function(){
+				var cep = this.value.replace(/[^0-9]/, "");
+				if(cep.length != 8){
+					return false;
+				}
+				var url = "https://viacep.com.br/ws/"+cep+"/json/";
+				$.getJSON(url, function(dadosRetorno){
+					try{
+						$("#endereco").val(dadosRetorno.logradouro);
+						$("#bairro").val(dadosRetorno.bairro);
+						$("#cidade").val(dadosRetorno.localidade);
+						$("#uf").val(dadosRetorno.uf);
+					}catch(ex){}
+				});
+			});
+
+
+
+function order(){
+    cep = document.getElementById("cep").value
+    uf = document.getElementById("uf").value
+    bairro = document.getElementById("bairro").value
+    cidade = document.getElementById("cidade").value
+    adress = document.getElementById("endereco").value
+    fone = document.getElementById("telefone").value
+
+    order_data = [{CEP: cep, UF: uf, BAIRRO: bairro, CIDADE: cidade, ADRESS: adress, FONE: fone, TOTAL: total, DESC: desc,}]
+
+    $.ajax({
+        type : 'POST',
+        url : "/order",
+        dataType: 'json',
+        contentType: 'application/json;charset=UTF-8',
+        data: JSON.stringify(order_data),
+        success: window.location = "http://127.0.0.1:8000/pay"
+        });
+    
+} 
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div class="payment-method">
+            </div>
+            <div class="input-fields">
+                <div class="column-1">
+                    <label id="cardholder">Nome</label>
+                    <input type="text" id="cardholder"/>
+                    <label id="cardnumber">Número</label>
+                    <input type="password" id="cardnumber"/>
+                </div>
+                <div class="small-inputs">
+                    <div>
+                        <label id="date">Valid date</label>
+                        <input type="text" id="date"/>
+                    </div>
+                    <div>
+                        <label id="verification">CVV / CVC *</label>
+                        <input type="password" id="verification"/>
+                    </div>
+                </div>
+            </div> -->

@@ -1,7 +1,7 @@
 # E-commerce using Flask
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/9f2ecddf-eec5-4f6d-b917-51b737052290">
+  <img src="https://github.com/user-attachments/assets/b2bc39ab-6601-43bf-b246-a3b822d10f7f">
 </p>
 
 ## Descrição
